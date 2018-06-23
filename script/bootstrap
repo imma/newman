@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-function main {
+function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  uname -a
+  block compile yarn
+  mkdir -p "$shome/bin"
+  ln -nfs "$(yarn exec -s which newman 2>/dev/null || true)" "$shome/bin/"
 }
 
-main "$@"
+bootstrap
