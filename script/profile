@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function _newman_profile {
+  local shome="${_newman_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$shome/exec:$PATH"
+}
+
+_newman_profile
